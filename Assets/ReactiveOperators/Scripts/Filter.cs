@@ -1,0 +1,19 @@
+﻿using UniRx;
+using UnityEngine;
+
+public class Filter : MonoBehaviour {
+
+    void Start() {
+        // generate base stream
+        var numberStream = Observable.EveryUpdate()
+            .Where(_ => Input.GetMouseButtonDown(0))
+            .Select(_ => Random.Range(0, 10));
+
+        var mapStream = numberStream.Where(x => x > 4);
+        mapStream.Subscribe(x => Debug.Log("Filtered value: " + x));
+
+        // alternative
+        //numberStream.Where(x => x > 4)
+        //    .Subscribe(x => Debug.Log("Filtered value: " + x));
+    }
+}
