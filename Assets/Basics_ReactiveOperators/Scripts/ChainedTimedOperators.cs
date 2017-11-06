@@ -2,7 +2,7 @@
 using UniRx;
 using UnityEngine;
 
-public class ChainedOperators : MonoBehaviour {
+public class ChainedTimedOperators : MonoBehaviour {
 
 
     void Start () {
@@ -10,9 +10,9 @@ public class ChainedOperators : MonoBehaviour {
         var clickStream = Observable.EveryUpdate()
             .Where(_ => Input.GetMouseButtonDown(0));
 
-        // double click counter
+        // multiple click counter with time window
         clickStream.Buffer(clickStream.Throttle(TimeSpan.FromMilliseconds(500)))
             .Where(x => x.Count >= 2)
-            .Subscribe(x => Debug.Log("multiple clicks detected! Count:" + x.Count));
+            .Subscribe(x => Debug.Log("multiple clicks detected! Count: " + x.Count));
     }
 }
