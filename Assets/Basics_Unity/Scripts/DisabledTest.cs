@@ -13,6 +13,10 @@ public class DisabledTest : MonoBehaviour {
         Debug.Log("Start called on " + gameObject.name);
     }
 
+    void OnEnable() {
+        Debug.Log("OnEnable called on " + gameObject.name);
+    }
+
     void FixedUpdate() {
         Debug.Log("FixedUpdate called on " + gameObject.name);
     }

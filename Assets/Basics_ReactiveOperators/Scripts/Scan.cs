@@ -18,5 +18,12 @@ public class Scan : MonoBehaviour {
         // alternative
         //numberStream.Scan((x, y) => x + y)
         //    .Subscribe(x => Debug.Log("Scanned value: " + x));
+
+        // just another way
+        //Observable.EveryUpdate()
+        //    .Where(_ => Input.GetMouseButtonDown(0))
+        //    .Select(_ => score.Value)
+        //    .Scan((x, y) => x + y)
+        //    .Subscribe(x => Debug.Log("Scanned value: " + x));
     }
 }

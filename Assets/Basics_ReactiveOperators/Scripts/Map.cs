@@ -19,5 +19,12 @@ public class Map : MonoBehaviour {
         // alternative
         //numberStream.Select(x => x * 10)
         //    .Subscribe(x => Debug.Log("Mapped value: " + x));
+
+        // just another way
+        //Observable.EveryUpdate()
+        //    .Where(_ => Input.GetMouseButtonDown(0))
+        //    .Select(_ => ++score.Value)
+        //    .Select(x => x * 10)
+        //    .Subscribe(x => Debug.Log("Mapped value: " + x));
     }
 }
