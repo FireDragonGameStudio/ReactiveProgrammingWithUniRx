@@ -30,7 +30,7 @@ public class BlockManager_00 : MonoBehaviour {
             newCube.AddComponent<Rigidbody>();
 
             // when using prefabs, use instantiate
-            //Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
+            //newCube = Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
 
             // destroy cube, after reaching y = -5
             newCube.transform.ObserveEveryValueChanged(x => x).Subscribe(x => {

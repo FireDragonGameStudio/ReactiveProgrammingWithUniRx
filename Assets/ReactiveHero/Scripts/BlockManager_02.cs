@@ -55,6 +55,7 @@ public class BlockManager_02 : MonoBehaviour {
             isScoreable.Value = false;
         });
         // change color for score border
+        scoreBoderCube.AddComponent<ObservableRandomEventTrigger>();
         scoreBoderCube.GetComponent<ObservableRandomEventTrigger>().OnRandomEventAsObservable().Subscribe(_ => {
             scoreBoderCube.GetComponent<Renderer>().material = _materialsAlpha[UnityEngine.Random.Range(0, 2)];
         });

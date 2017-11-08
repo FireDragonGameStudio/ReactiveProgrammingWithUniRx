@@ -4,4 +4,7 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/ReactiveHero/Scenes/02_ReactiveHero.unity
+    guid: 03364015feadecc44891a71e1431aa01
