@@ -33,8 +33,8 @@ public class BlockManager_00 : MonoBehaviour {
             //newCube = Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
 
             // destroy cube, after reaching y = -5
-            newCube.transform.ObserveEveryValueChanged(x => x).Subscribe(x => {
-                if (x.position.y < -5f) {
+            newCube.transform.ObserveEveryValueChanged(x => x.position).Subscribe(pos => {
+                if (pos.y < -5f) {
                     Destroy(newCube);
                 }
             });
