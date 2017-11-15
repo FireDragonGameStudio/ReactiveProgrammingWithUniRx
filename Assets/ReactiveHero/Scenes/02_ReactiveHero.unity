@@ -577,7 +577,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Increment score
+  m_Text: Score
 --- !u!222 &1361020024
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -595,9 +595,8 @@ GameObject:
   - component: {fileID: 1747590157}
   - component: {fileID: 1747590156}
   - component: {fileID: 1747590155}
-  - component: {fileID: 1747590159}
   m_Layer: 0
-  m_Name: ScoreCubeBorder
+  m_Name: ScoreCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -667,17 +666,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1747590159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1747590154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cadcfd987fed8a044b75709fc19ad0f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1909770565
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,11 +706,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e872beb8125b7ea498d3c3ae3956793b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreBoderCube: {fileID: 1747590154}
+  scoreCube: {fileID: 1747590154}
   colorCubePrefab: {fileID: 114915265092800718, guid: 706a7894e05c54d40a337ed66e894d0a,
     type: 2}
   scoreText: {fileID: 991953597}
-  tapScore: {fileID: 570704119}
+  scoreButton: {fileID: 570704119}
   score:
     value: 0
   isScoreable:

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UniRx;
+﻿using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +6,7 @@ using UnityEngine.UI;
 public class BlockManager_02 : MonoBehaviour {
 
     [SerializeField]
-    private GameObject scoreBoderCube;
+    private GameObject scoreCube;
 
     [SerializeField]
     private ColorCube colorCubePrefab;
@@ -18,7 +15,7 @@ public class BlockManager_02 : MonoBehaviour {
     private Text scoreText;
 
     [SerializeField]
-    private Button tapScore;
+    private Button scoreButton;
 
     [SerializeField]
     private IntReactiveProperty score = new IntReactiveProperty(0);
@@ -45,23 +42,24 @@ public class BlockManager_02 : MonoBehaviour {
         });
 
         // check for scorecount
-        scoreBoderCube.GetComponent<ObservableTriggerTrigger>().OnTriggerEnterAsObservable().Subscribe(x => {
-            if (x.GetComponent<Renderer>().material.color.r == scoreBoderCube.GetComponent<Renderer>().material.color.r) {
+        scoreCube.AddComponent<ObservableTriggerTrigger>();
+        scoreCube.GetComponent<ObservableTriggerTrigger>().OnTriggerEnterAsObservable().Subscribe(x => {
+            if (x.GetComponent<Renderer>().material.color.r == scoreCube.GetComponent<Renderer>().material.color.r) {
                 isScoreable.Value = true;
             }
         });
         // disable scorecount
-        scoreBoderCube.GetComponent<ObservableTriggerTrigger>().OnTriggerExitAsObservable().Subscribe(_ => {
+        scoreCube.GetComponent<ObservableTriggerTrigger>().OnTriggerExitAsObservable().Subscribe(_ => {
             isScoreable.Value = false;
         });
         // change color for score border
-        scoreBoderCube.AddComponent<ObservableRandomEventTrigger>();
-        scoreBoderCube.GetComponent<ObservableRandomEventTrigger>().OnRandomEventAsObservable().Subscribe(_ => {
-            scoreBoderCube.GetComponent<Renderer>().material = _materialsAlpha[UnityEngine.Random.Range(0, 2)];
+        scoreCube.AddComponent<ObservableRandomEventTrigger>();
+        scoreCube.GetComponent<ObservableRandomEventTrigger>().OnRandomEventAsObservable().Subscribe(_ => {
+            scoreCube.GetComponent<Renderer>().material = _materialsAlpha[UnityEngine.Random.Range(0, 2)];
         });
 
         // get button and increment score
-        tapScore.OnClickAsObservable().Subscribe(_ => {
+        scoreButton.OnClickAsObservable().Subscribe(_ => {
             if (isScoreable.Value) {
                 score.Value++;
                 isScoreable.Value = false;
