@@ -1,35 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UniRx;
+﻿using UnityEngine;
 using System.Threading.Tasks;
 using System;
 using UnityEngine.UI;
 
 public class AsyncAwaitTest : MonoBehaviour {
 
-    //[SerializeField]
-    //private bool startAsynTask = false;
+    [SerializeField]
+    private bool startAsynTask = false;
 
     private float _waitForMilliSec = 1500f;
 
-    void Start() {
-        // start async task
-        UniRxSynchronizationContextSolves();
+    private async void Start() {
         Debug.Log("async task called");
+        await UniRxSynchronizationContextSolves();
     }
 
     // example: How to call async task during update
-    //void Update () {
-    //    if (startAsynTask) {
-    //        startAsynTask = false;
-            
-    //        // start async task
-    //        UniRxSynchronizationContextSolves();
+    private async void Update() {
+        if (startAsynTask) {
+            startAsynTask = false;
 
-    //        Debug.Log("async task called");
-    //    }
-    //}
+            Debug.Log("async task called");
+
+            await UniRxSynchronizationContextSolves();
+        }
+    }
 
     async Task UniRxSynchronizationContextSolves() {
         Debug.Log("start delay");

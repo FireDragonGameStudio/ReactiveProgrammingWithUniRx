@@ -15,8 +15,7 @@ public class ColorCube : MonoBehaviour {
     [SerializeField]
     private Material[] _materials;
 
-    void Start() {
-        // not necessaty to get the components in start method. Referencing in inspector is also possible
+    private void Start() {
         _rigidbody = GetComponent<Rigidbody>();
         _meshRenderer = GetComponent<MeshRenderer>();
 
@@ -28,15 +27,11 @@ public class ColorCube : MonoBehaviour {
         });
     }
 
-    void OnEnable() {
-        // reset position
+    private void OnEnable() {
         transform.position = new Vector3(Random.Range(-3f, 3f), 5, 0);
 
-        // reset velocity of rigidbody
         _rigidbody.velocity = Vector3.zero;
-        // get new random material
         _meshRenderer.material = _materials[Random.Range(0, 2)];
-        // add little torque for rotation
         _rigidbody.AddTorque(Vector3.one);
     }
 }

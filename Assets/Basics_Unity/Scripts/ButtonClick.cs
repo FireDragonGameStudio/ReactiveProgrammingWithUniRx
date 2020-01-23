@@ -8,8 +8,8 @@ public class ButtonClick : MonoBehaviour {
     [SerializeField]
     private Button scriptButton;
 
-    void Start() {
-        if (scriptButton != null) {
+    private void Start() {
+        if (scriptButton) {
             scriptButton.onClick.AddListener(OnClick_EventListener);
         }
     }
@@ -24,5 +24,11 @@ public class ButtonClick : MonoBehaviour {
 
     private void OnClick_EventListener() {
         Debug.Log("OnClick_EventListener called.");
+    }
+
+    private void OnDestroy() {
+        if (scriptButton) {
+            scriptButton.onClick.RemoveAllListeners();
+        }
     }
 }

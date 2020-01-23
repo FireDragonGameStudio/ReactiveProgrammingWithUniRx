@@ -8,23 +8,23 @@ public class Map : MonoBehaviour {
 
     void Start() {
         // generate base stream
-        var numberStream = Observable.EveryUpdate()
-            .Where(_ => Input.GetMouseButtonDown(0))
-            .Select(_ => ++score.Value);
-        //.Subscribe(x => Debug.Log("Generated value: " + x));
+        //UniRx.IObservable<int> numberStream = Observable.EveryUpdate()
+        //    .Where(_ => Input.GetMouseButtonDown(0))
+        //    .Select(_ => ++score.Value);
+        ////.Subscribe(x => Debug.Log("Generated value: " + x));
 
-        var mapStream = numberStream.Select(x => x * 10);
-        mapStream.Subscribe(x => Debug.Log("Mapped value: " + x));
+        //UniRx.IObservable<int> mapStream = numberStream.Select(x => x * 10);
+        //mapStream.Subscribe(x => Debug.Log($"Mapped value *10: {x}"));
 
         // alternative
         //numberStream.Select(x => x * 10)
         //    .Subscribe(x => Debug.Log("Mapped value: " + x));
 
         // just another way
-        //Observable.EveryUpdate()
-        //    .Where(_ => Input.GetMouseButtonDown(0))
-        //    .Select(_ => ++score.Value)
-        //    .Select(x => x * 10)
-        //    .Subscribe(x => Debug.Log("Mapped value: " + x));
+        Observable.EveryUpdate()
+            .Where(_ => Input.GetMouseButtonDown(0))
+            .Select(_ => ++score.Value)
+            .Select(x => x * 10)
+            .Subscribe(x => Debug.Log($"Mapped value *10: {x}"));
     }
 }

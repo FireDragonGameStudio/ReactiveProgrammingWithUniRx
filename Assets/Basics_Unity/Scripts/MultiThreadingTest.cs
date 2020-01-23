@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,7 +19,7 @@ public class MultiThreadingTest : MonoBehaviour {
         {
             // heavy method...
             System.Threading.Thread.Sleep(TimeSpan.FromSeconds(3));
-            return 10;
+            return 30;
         });
 
         // Join and await two other thread values
@@ -29,7 +27,7 @@ public class MultiThreadingTest : MonoBehaviour {
             .ObserveOnMainThread() // return to main thread
             .Subscribe(xs => {
                 // Unity can't touch GameObject from other thread
-                // but use ObserveOnMainThread, you can touch GameObject naturally.
+                // but using ObserveOnMainThread, you can touch GameObject naturally.
                 GameObject.Find("MultiThreadingTestText").GetComponent<Text>().text = xs[0] + ":" + xs[1];
             });
     }

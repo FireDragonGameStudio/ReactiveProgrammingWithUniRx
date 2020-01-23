@@ -12,11 +12,11 @@ public class ObservableRandomEventTrigger : ObservableTriggerBase {
     private float _currentInterval = 0f;
     private float _currentIntervalDuration = 0f;
 
-    void Start() {
+    private void Start() {
         _currentInterval = GenerateNewInterval();
     }
 
-    void Update() {
+    private void Update() {
         _currentIntervalDuration += Time.deltaTime;
 
         if (_currentIntervalDuration >= _currentInterval) {

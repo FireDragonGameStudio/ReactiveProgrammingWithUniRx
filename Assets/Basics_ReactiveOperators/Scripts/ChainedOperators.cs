@@ -3,15 +3,13 @@ using UniRx;
 using UnityEngine;
 
 public class ChainedOperators : MonoBehaviour {
-
-
-    void Start () {
-        //// generate clickstream
-        //var clickStream = Observable.EveryUpdate()
+    private void Start () {
+        // generate clickstream
+        //UniRx.IObservable<long> clickStream = Observable.EveryUpdate()
         //    .Where(_ => Input.GetMouseButtonDown(0));
 
-        //// click counter
-        //var countStream = clickStream.Select(x => x = 1);
+        // click counter
+        //UniRx.IObservable<long> countStream = clickStream.Select(x => x = 1);
         //countStream.Scan((x, y) => x + y)
         //    .Subscribe(x => Debug.Log("Click: " + x));
 
@@ -21,10 +19,10 @@ public class ChainedOperators : MonoBehaviour {
         //    .Subscribe(x => Debug.Log("Click: " + x));
 
         // just another way
-        //Observable.EveryUpdate()
-        //   .Where(_ => Input.GetMouseButtonDown(0))
-        //   .Select(x => x = 1)
-        //   .Scan((x, y) => x + y)
-        //   .Subscribe(x => Debug.Log("Click: " + x));
+        Observable.EveryUpdate()
+           .Where(_ => Input.GetMouseButtonDown(0))
+           .Select(x => x = 1)
+           .Scan((x, y) => x + y)
+           .Subscribe(x => Debug.Log($"Click: {x}"));
     }
 }

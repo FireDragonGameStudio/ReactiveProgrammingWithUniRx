@@ -1,31 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class DisabledTest : MonoBehaviour {
-
-
-    void Awake() {
+public class ActivationTest : MonoBehaviour {
+    private void Awake() {
         Debug.Log("Awake called on " + gameObject.name);
     }
 
-    void Start () {
+    private void Start () {
         Debug.Log("Start called on " + gameObject.name);
     }
 
-    void OnEnable() {
+    private void OnEnable() {
         Debug.Log("OnEnable called on " + gameObject.name);
     }
 
-    void FixedUpdate() {
+    private void FixedUpdate() {
         Debug.Log("FixedUpdate called on " + gameObject.name);
     }
 
-    void Update () {
+    private void Update () {
         Debug.Log("Update called on " + gameObject.name);
     }
 
-    void LateUpdate() {
+    private void LateUpdate() {
         Debug.Log("LateUpdate called on " + gameObject.name);
+    }
+
+    private void OnDestroy() {
+        Debug.Log("OnDestroy called on " + gameObject.name);
     }
 }
